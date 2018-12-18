@@ -1,0 +1,31 @@
+172.18.108.255: udp 10070
+
+struct StdQuote5{
+    char instrument[32]; ok
+    char updateTime[9];
+    int updateMS;
+    double price;		 ok
+    int volume;
+    double turnover;
+    int openinterest;		ok
+    double askPrice1;		ok
+    int askVolume1;			ok
+    double bidPrice1;	 ok
+    int bidVolume1;			ok
+    double askPrice2;		ok
+    int askVolume2;			ok
+    double bidPrice2;	ok
+    int bidVolume2;			ok
+    double askPrice3;		ok
+    int askVolume3;			ok
+    double bidPrice3;	ok
+    int bidVolume3;			ok
+    double askPrice4;		ok
+    int askVolume4;		ok
+    double bidPrice4;	ok
+    int bidVolume4;			ok
+    double askPrice5;	ok
+    int askVolume5;		ok
+    double bidPrice5;	ok
+    int bidVolume5;		ok
+};
