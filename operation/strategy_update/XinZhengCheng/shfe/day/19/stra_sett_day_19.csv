@@ -1,0 +1,15 @@
+comm_no,strategy,contract,lot
+shcu,st301a_cu_day,cu1902,1
+shni,st301a_ni_day,ni1905,1
+shpb,st301a_pb_day,pb1901,1
+shrb,st301a_rb_day,rb1905,85
+shcu,st303a_cu_day,cu1902,1
+shpb,st303a_pb_day,pb1901,1
+shrb,st303a_rb_day,rb1905,85
+shrb,st304a_rb_day,rb1905,85
+shrb,st306a_rb_day,rb1905,85
+shrb,st307a_rb_day,rb1905,85
+shrb,st308a_rb_day,rb1905,85
+shpb,st302a_pb_day,pb1901,1
+shpb,st315a_pb_day,pb1901,1
+shcu,st309a_cu_day,cu1902,1
