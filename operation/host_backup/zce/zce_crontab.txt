@@ -1,0 +1,103 @@
+
+##########################################
+# download market data
+#
+#########################################
+#--day
+35 08 * * 1-5 sh /home/u910019/md/download/day/mktdata/start.sh
+05 15 * * 1-5 sh /home/u910019/md/download/day/mktdata/stop.sh
+06 15 * * 1-5 sh /home/u910019/md/download/day/mktdata/transfer_md.sh
+19 15 * * 1-5 sh /home/u910019/md/download/day/rm_old_files.sh
+#--night
+32 20 * * 1-5 sh /home/u910019/md/download/night/mktdata/start.sh
+30 02 * * 2-6 sh /home/u910019/md/download/night/mktdata/stop.sh
+00 03 * * 2-6 sh /home/u910019/md/download/night/mktdata/transfer_md.sh
+10 03 * * 2-6 sh /home/u910019/md/download/night/rm_old_files.sh
+
+###################################
+# day trading
+#
+#######################################
+# start trading service
+#----exlporer
+37 8 * * 1-5 sh /home/u910019/trade/zce_day17/x-zce/start.sh
+#37 8 * * 1-5 sh /home/u910019/trade/zce_day113/x-zce/start.sh
+#----medi
+37 8 * * 1-5 sh  /home/u910019/medi/day211/x-zce/start.sh
+
+#----winfund
+37 8 * * 1-5 sh  /home/u910019/winfund/day101/x-zce/start.sh
+
+00 15 * * 1-5 python  /home/u910019/medi/day211/x-zce/conf_to_csv.py
+
+# stop trading service
+#--------explorer
+05 15 * * 1-5 sh /home/u910019/trade/zce_day17/x-zce/stop.sh
+#05 15 * * 1-5 sh /home/u910019/trade/zce_day113/x-zce/stop.sh
+#--------medi
+05 15 * * 1-5  sh /home/u910019/medi/day211/x-zce/stop.sh
+
+#--------winfund
+05 15 * * 1-5  sh /home/u910019/winfund/day101/x-zce/stop.sh
+
+40 15 * * 1-5 sh /home/u910019/trade/day/backup/combine_log.sh
+
+# clean old files
+#------------explorer
+06 15 * * 1-5 sh /home/u910019/trade/zce_day17/rm_old_files.sh
+06 15 * * 1-5 sh /home/u910019/trade/zce_day113/rm_old_files.sh
+#------------medi
+06 15 * * 1-5  sh /home/u910019/medi/day211/rm_old_files.sh
+06 15 * * 1-5  sh /home/u910019/medi/day/rm_old_files.sh
+
+#------------winfund
+06 15 * * 1-5  sh /home/u910019/winfund/day101/rm_old_files.sh
+
+30 15 * * 1-5 sh ~/domi_contr_check/domi_contr_finder.sh -g 
+
+35 15 * * 1-5 sh /home/u910019/medi/day/backup/combine_log.sh
+
+########################################
+# night trading
+#
+#############################################
+
+# medi: update setting
+20 19 * * 1-7 /home/u910019/medi/day211/x-zce/tools/configurator.py
+20 19 * * 1-7 /home/u910019/medi/night211/x-zce/tools/configurator.py
+
+# start trading service
+#----explorer
+34 20 * * 1-5 sh /home/u910019/trade/zce_night17/x-zce/start.sh
+#34 20 * * 1-5 sh /home/u910019/trade/zce_night113/x-zce/start.sh
+#------medi
+34 20 * * 1-5  sh /home/u910019/medi/night211/x-zce/start.sh
+
+#------winfund
+34 20 * * 1-5  sh /home/u910019/winfund/night101/x-zce/start.sh
+
+30 2 * * 2-6 python  /home/u910019/medi/night211/x-zce/conf_to_csv.py
+
+# stop trading service
+#---------explorer
+31 2 * * 2-6 sh /home/u910019/trade/zce_night17/x-zce/stop.sh
+#31 2 * * 2-6 sh /home/u910019/trade/zce_night113/x-zce/stop.sh
+#---------medi
+31 2 * * 2-6  sh /home/u910019/medi/night211/x-zce/stop.sh
+
+#---------winfund
+31 2 * * 2-6  sh /home/u910019/winfund/night101/x-zce/stop.sh
+
+00 3 * * 2-6 sh /home/u910019/medi/night/backup/combine_log.sh
+00 3 * * 2-6 sh /home/u910019/trade/night/backup/combine_log.sh
+
+# clean old files
+10 3 * * 2-6 sh /home/u910019/trade/zce_night17/rm_old_files.sh
+10 3 * * 2-6 sh /home/u910019/trade/zce_night113/rm_old_files.sh
+#-----------medi
+10 3 * * 2-6  sh /home/u910019/medi/night211/rm_old_files.sh
+10 3 * * 2-6  sh /home/u910019/medi/night/rm_old_files.sh
+
+#-----------winfund
+10 3 * * 2-6  sh /home/u910019/winfund/night101/rm_old_files.sh
+

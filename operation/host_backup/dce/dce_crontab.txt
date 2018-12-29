@@ -1,0 +1,93 @@
+#############################################
+# download market data
+#
+################################################
+#--day
+30 08 * * 1-5 sh /home/u910019/md/download/day/dcelv2_mktsvc/start.sh
+10 15 * * 1-5 sh /home/u910019/md/download/day/dcelv2_mktsvc/stop.sh
+12 15 * * 1-5 sh /home/u910019/md/download/day/dcelv2_mktsvc/transfer_md.sh
+17 15 * * 1-5 sh /home/u910019/md/download/day/rm_old_files.sh
+
+
+# start trading service
+#------medi
+31 8 * * 1-5     sh /home/u910019/medi/day210/x-dce/start.sh
+06 15 * * 1-5 python  /home/u910019/medi/day210/x-dce/conf_to_csv.py
+#-------------explorer
+31 8 * * 1-5 sh /home/u910019/explorer/day28/x-dce/start.sh
+31 8 * * 1-5 sh /home/u910019/explorer/day100/x-dce/start.sh
+#31 8 * * 1-5 sh /home/u910019/explorer/day111/x-dce/start.sh
+#-------------winfund
+31 8 * * 1-5 sh /home/u910019/winfund/day097/x-dce/start.sh
+
+# stop trading service
+#-------------medi
+09 15 * * 1-5     sh /home/u910019/medi/day210/x-dce/stop.sh
+#--------------explorer
+09 15 * * 1-5 sh /home/u910019/explorer/day28/x-dce/stop.sh
+09 15 * * 1-5 sh /home/u910019/explorer/day100/x-dce/stop.sh
+09 15 * * 1-5 sh /home/u910019/explorer/day111/x-dce/stop.sh
+#----------------------winfund
+09 15 * * 1-5 sh /home/u910019/winfund/day097/x-dce/stop.sh
+
+# clean old files
+#----------medi
+17 15 * * 1-5     sh /home/u910019/medi/day210/rm_old_files.sh
+17 15 * * 1-5     sh /home/u910019/medi/day/rm_old_files.sh
+#----------------explorer
+17 15 * * 1-5 sh /home/u910019/explorer/day28/rm_old_files.sh
+17 15 * * 1-5 sh /home/u910019/explorer/day100/rm_old_files.sh
+17 15 * * 1-5 sh /home/u910019/explorer/day111/rm_old_files.sh
+17 15 * * 1-5 sh /home/u910019/explorer/x-trader/rm_old_files.sh
+#------------------winfund
+17 15 * * 1-5 sh /home/u910019/winfund/day097/rm_old_files.sh
+
+18 15 * * 1-5 sh ~/domi_contr_check/dce_domi_contr_finder.sh -g
+
+#----------------medi combine
+20 15 * * 1-5 sh /home/u910019/medi/day/backup/combine_log.sh
+
+# night trading
+20 19 * * 1-7     /home/u910019/medi/day210/x-dce/tools/configurator.py
+20 19 * * 1-7     /home/u910019/medi/night210/x-dce/tools/configurator.py
+
+#---------------start
+#---------------explorder start
+36 20 * * 1-5     sh /home/u910019/explorer/night28/x-dce/start.sh
+36 20 * * 1-5     sh /home/u910019/explorer/night100/x-dce/start.sh
+#36 20 * * 1-5     sh /home/u910019/explorer/night111/x-dce/start.sh
+
+#----------------winfund
+36 20 * * 1-5     sh /home/u910019/winfund/night097/x-dce/start.sh
+
+#-------------medi start
+36 20 * * 1-5     sh /home/u910019/medi/night210/x-dce/start.sh
+
+30 2 * * 2-6 python /home/u910019/medi/night210/x-dce/conf_to_csv.py
+
+#---------------stop
+#---------------explorder stop
+31 2 * * 2-6     sh /home/u910019/explorer/night28/x-dce/stop.sh
+31 2 * * 2-6     sh /home/u910019/explorer/night100/x-dce/stop.sh
+31 2 * * 2-6     sh /home/u910019/explorer/night111/x-dce/stop.sh
+
+#----------------------winfund
+31 2 * * 2-6     sh /home/u910019/winfund/night097/x-dce/stop.sh
+
+#-----------medi stop
+31 2 * * 2-6     sh /home/u910019/medi/night210/x-dce/stop.sh
+#-----------medi log
+00 3 * * 2-6 sh /home/u910019/medi/night/backup/combine_log.sh
+
+# clean old files
+#------------explorer
+10 3 * * 2-6     sh /home/u910019/explorer/night28/rm_old_files.sh
+10 3 * * 2-6     sh /home/u910019/explorer/night100/rm_old_files.sh
+10 3 * * 2-6     sh /home/u910019/explorer/night111/rm_old_files.sh
+
+#---------------------winfund
+10 3 * * 2-6     sh /home/u910019/winfund/night097/rm_old_files.sh
+
+#------------medi
+10 3 * * 2-6     sh /home/u910019/medi/night210/rm_old_files.sh
+10 3 * * 2-6     sh /home/u910019/medi/night/rm_old_files.sh

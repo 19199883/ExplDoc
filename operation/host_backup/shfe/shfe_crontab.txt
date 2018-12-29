@@ -1,0 +1,120 @@
+# download market data
+# ----shfe day
+32 08 * * 1-5 sh  /home/u910019/md/download/day/shfe_jr_mktsvc/start.sh
+05 15 * * 1-5 sh  /home/u910019/md/download/day/shfe_jr_mktsvc/stop.sh
+06 15 * * 1-5 sh  /home/u910019/md/download/day/shfe_jr_mktsvc/transfer_md.sh
+05 15 * * 1-5 sh  /home/u910019/md/download/day/rm_old_files.sh
+# --- shfe night
+30 20 * * 1-5 sh  /home/u910019/md/download/night/shfe_jr_mktsvc/start.sh
+32 02 * * 2-6 sh  /home/u910019/md/download/night/shfe_jr_mktsvc/stop.sh
+34 02 * * 2-6 sh  /home/u910019/md/download/night/shfe_jr_mktsvc/transfer_md.sh
+22 03 * * 2-6 sh  /home/u910019/md/download/night/rm_old_files.sh
+
+#########################################
+# day trading
+############################################
+
+# start trading service
+# ---winfund
+33 8 * * 1-5 sh /home/u910019/myfund/day229/x-shfe/start.sh
+#----medi
+33 8 * * 1-5 sh    /home/u910019/medi/day110/x-shfe/start.sh
+# ---explorer
+33 8 * * 1-5 sh /home/u910019/trade/day19/x-shfe/start.sh
+33 8 * * 1-5 sh /home/u910019/trade/day63/x-shfe/start.sh
+#33 8 * * 1-5 sh /home/u910019/trade/day109/x-shfe/start.sh
+33 8 * * 1-5 sh /home/u910019/trade/day056/x-shfe/start.sh
+#33 8 * * 1-5 sh /home/u910019/trade/day236/x-shfe/start.sh
+
+00 15 * * 1-5 python /home/u910019/medi/day110/x-shfe/conf_to_csv.py 
+
+# stop trading service
+#----winfund
+05 15 * * 1-5 sh /home/u910019/myfund/day229/x-shfe/stop.sh
+#----explorer
+05 15 * * 1-5 sh /home/u910019/trade/day19/x-shfe/stop.sh
+05 15 * * 1-5 sh /home/u910019/trade/day63/x-shfe/stop.sh
+05 15 * * 1-5 sh /home/u910019/trade/day109/x-shfe/stop.sh
+05 15 * * 1-5 sh /home/u910019/trade/day056/x-shfe/stop.sh
+05 15 * * 1-5 sh /home/u910019/trade/day236/x-shfe/stop.sh
+
+#---medi
+05 15 * * 1-5 sh    /home/u910019/medi/day110/x-shfe/stop.sh
+
+# combine data
+25 15 * * 1-5 sh /home/u910019/trade/day/backup/combine_log.sh
+25 15 * * 1-5 sh /home/u910019/medi/day/backup/combine_log.sh
+
+37 15 * * 1-5 sh ~/domi_contr_check/shfe_domi_contr_finder.sh -g
+
+# clean old files
+#----------explorer
+06 15 * * 1-5 sh    /home/u910019/myfund/day229/rm_old_files.sh
+#----------explorer
+06 15 * * 1-5 sh    /home/u910019/trade/day/rm_old_files.sh
+06 15 * * 1-5 sh    /home/u910019/trade/day19/rm_old_files.sh
+06 15 * * 1-5 sh    /home/u910019/trade/day63/rm_old_files.sh
+#06 15 * * 1-5 sh    /home/u910019/trade/day85/rm_old_files.sh
+06 15 * * 1-5 sh    /home/u910019/trade/day109/rm_old_files.sh
+06 15 * * 1-5 sh    /home/u910019/trade/day056/rm_old_files.sh
+06 15 * * 1-5 sh    /home/u910019/trade/day236/rm_old_files.sh
+
+#---------------medi
+06 15 * * 1-5 sh    /home/u910019/medi/day110/rm_old_files.sh
+06 15 * * 1-5 sh    /home/u910019/medi/day/rm_old_files.sh
+
+# copy data from Explorer to Medi
+
+#################################################
+# night trading
+#
+################################################
+#----medi:update setting
+20 19 * * 1-7   /home/u910019/medi/day110/x-shfe/tools/configurator.py
+20 19 * * 1-7   /home/u910019/medi/night110/x-shfe/tools/configurator.py
+
+# start trading service
+#----medi
+31 20 * * 1-5 sh         /home/u910019/medi/night110/x-shfe/start.sh
+#------winfund
+31 20 * * 1-5 sh /home/u910019/myfund/night229/x-shfe/start.sh
+#------explorer
+31 20 * * 1-5 sh /home/u910019/trade/night_910019/x-shfe/start.sh
+31 20 * * 1-5 sh /home/u910019/trade/night_910063/x-shfe/start.sh
+#31 20 * * 1-5 sh /home/u910019/trade/night109/x-shfe/start.sh
+31 20 * * 1-5 sh /home/u910019/trade/night056/x-shfe/start.sh
+#31 20 * * 1-5 sh /home/u910019/trade/night236/x-shfe/start.sh
+
+30 2 * * 2-6 python /home/u910019/medi/night110/x-shfe/conf_to_csv.py 
+
+# stop trading service
+#----medi
+33 2 * * 2-6 sh         /home/u910019/medi/night110/x-shfe/stop.sh
+#----winfund
+33 2 * * 2-6 sh /home/u910019/myfund/night229/x-shfe/stop.sh
+#----explorer
+33 2 * * 2-6 sh /home/u910019/trade/night_910019/x-shfe/stop.sh
+33 2 * * 2-6 sh /home/u910019/trade/night_910063/x-shfe/stop.sh
+33 2 * * 2-6 sh /home/u910019/trade/night109/x-shfe/stop.sh
+33 2 * * 2-6 sh /home/u910019/trade/night056/x-shfe/stop.sh
+33 2 * * 2-6 sh /home/u910019/trade/night236/x-shfe/stop.sh
+
+00 3 * * 2-6 sh /home/u910019/trade/night/backup/combine_log.sh
+00 3 * * 2-6 sh /home/u910019/medi/night/backup/combine_log.sh
+
+# clean old files
+#-------------medi
+20 3 * * 2-6 sh   /home/u910019/medi/night/rm_old_files.sh
+20 3 * * 2-6 sh   /home/u910019/medi/night110/rm_old_files.sh
+#---------------winfund
+21 3 * * 2-6 sh  /home/u910019/myfund/night229/rm_old_files.sh
+#---------------explorer
+22 3 * * 2-6 sh  /home/u910019/trade/night/rm_old_files.sh
+21 3 * * 2-6 sh  /home/u910019/trade/night_910019/rm_old_files.sh
+21 3 * * 2-6 sh  /home/u910019/trade/night_910063/rm_old_files.sh
+#21 3 * * 2-6 sh  /home/u910019/trade/ngt85/rm_old_files.sh
+21 3 * * 2-6 sh  /home/u910019/trade/night109/rm_old_files.sh
+21 3 * * 2-6 sh  /home/u910019/trade/night056/rm_old_files.sh
+21 3 * * 2-6 sh  /home/u910019/trade/night236/rm_old_files.sh
+
+# copy data from Explorer to Medi

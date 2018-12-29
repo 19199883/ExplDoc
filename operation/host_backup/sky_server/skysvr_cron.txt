@@ -1,0 +1,7 @@
+50 15 * * 1-5 sh /home/u910019/shfe/download_day_data.sh
+
+30 3 * * 2-6 sh /home/u910019/shfe/download_night_data.sh
+
+58 15 * * 1-5 sh /home/u910019/dce/download_day_data.sh
+
+40 3 * * 2-6 sh /home/u910019/dce/download_night_data.sh
