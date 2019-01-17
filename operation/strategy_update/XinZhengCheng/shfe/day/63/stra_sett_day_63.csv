@@ -1,11 +1,3 @@
 comm_no,strategy,contract,lot
-shrb,st306a_rb_day,rb1905,22
-shrb,st307a_rb_day,rb1905,15
-shcu,st309a_cu_day,cu1902,1
-shpb,st309a_pb_day,pb1902,1
-shrb,st309a_rb_day,rb1905,22
-shrb,st310a_rb_day,rb1905,22
-shpb,st311a_pb_day,pb1902,1
-shrb,st311a_rb_day,rb1905,22
-shpb,st314a_pb_day,pb1902,1
-shrb,st314a_rb_day,rb1905,22
+shrb,st305a_rb_day,rb1905,0
+shru,st307a_ru_day,ru1905,0
