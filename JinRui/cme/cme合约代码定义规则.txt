@@ -1,0 +1,41 @@
+代码定义：
+CL：原油代码
+F：1月 
+9：19年
+CLZ8 - 原油1812
+CLF9 - 原油1901
+CLG9 - 原油1902
+CLH9 - 原油1903
+CLJ9 - 原油1904
+CLK9 - 原油1905
+CLM9 - 原油1906
+CLN9 - 原油1907
+CLQ9 - 原油1908
+CLU9 - 原油1909
+CLV9 - 原油1910
+CLX9 - 原油1911
+CLZ9 - 原油1912
+
+月份规则：
+F:1月
+G:2月
+H:3月
+J:4月
+K:5月
+M:6月
+N:7月
+Q:8月
+U:9月
+V:10月
+X:11月
+Z:12月
+
+cme原油日历中文版网页：
+https://www.cmegroup.com/cn-s/trading/energy/crude-oil/light-sweet-crude_product_calendar_futures.html 
+
+cme原油日历英文版网页：
+https://www.cmegroup.com/trading/energy/crude-oil/light-sweet-crude_product_calendar_futures.html  	   
+
+换月应该是在日历上提到的结算日
+
+合约 金/银/HG铜/mini标普500/豆/原油CL/天燃气/
