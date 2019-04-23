@@ -1,0 +1,20 @@
+没有onRtnOrder, onRtnTrade的回报
+
+早晨9点开盘之后，我们报单，消息如下，但是没有对应的onRtnOrder回报
+2018-07-12 09:00:11,393 [DEBUG] [atchQueue[main]] OUT-main: reqOrderInsert(InputOrderField:[BrokerID="4600" InvestorID="220888" InstrumentID="i1903" OrderRef="22" UserID="220888" OrderPriceType='2' Direction='0' CombOffsetFlag="0" CombHedgeFlag="1" LimitPrice=464.5 VolumeTotalOriginal=10 TimeCondition='3' GTDDate=<nil> VolumeCondition='1' MinVolume=0 ContingentCondition='1' StopPrice=0.0 ForceCloseReason='0' IsAutoSuspend=0 BusinessUnit=<nil> RequestID=28 UserForceClose=0 IsSwapOrder=0]);
+
+9点18分，重新连接ctp
+我们发出reqQryTrade 的請求, ctp 有onRspQryTrade 的回報
+2018-07-12 09:18:08,976 [DEBUG] [MAIN           ] OUT-main: reqQryTrade(QryTradeField:[BrokerID="4600" InvestorID="220888" InstrumentID=<nil> ExchangeID=<nil> TradeID=<nil> TradeTimeStart=<nil> TradeTimeEnd=<nil>]);
+2018-07-12 09:18:08,990 [DEBUG] [callback thread] IN-main: onRspQryTrade(TradeField:[BrokerID="4600" InvestorID="220888" InstrumentID="i1811" OrderRef=<nil> UserID=<nil> ExchangeID="DCE" TradeID=<nil> Direction='0' OrderSysID=<nil> ParticipantID="0117" ClientID="03421065" TradingRole=' ' ExchangeInstID="i1811" OffsetFlag='0' HedgeFlag='1' Price=462.0 Volume=10 TradeDate="20180712" TradeTime="22:39:29" TradeType='0' PriceSource='0' TraderID="01172006" OrderLocalID=<nil> ClearingPartID="0117" BusinessUnit=<nil> SequenceNo=1406 TradingDay="20180712" SettlementID=1 BrokerOrderSeq=1790 TradeSource='0']|RspInfoField:[ErrorID=0 ErrorMsg=<nil>]|reqId=5|isLast=false);
+... ...
+
+我們發出reqQryQuote的請求, ctp 柜台有onRspQryOrder的回報
+2018-07-12 09:18:05,434 [DEBUG] [MAIN           ] OUT-main: reqQryOrder(QryOrderField:[BrokerID="4600" InvestorID="220888" InstrumentID=<nil> ExchangeID=<nil> OrderSysID=<nil> InsertTimeStart=<nil> InsertTimeEnd=<nil>]);
+2018-07-12 09:18:05,468 [DEBUG] [callback thread] IN-main: onRspQryOrder(OrderField:[BrokerID="4600" InvestorID="220888" InstrumentID="i1811" OrderRef=<nil> UserID=<nil> OrderPriceType='2' Direction='0' CombOffsetFlag="0" CombHedgeFlag="1" LimitPrice=462.5 VolumeTotalOriginal=1 TimeCondition='3' GTDDate=<nil> VolumeCondition='1' MinVolume=0 ContingentCondition='1' StopPrice=0.0 ForceCloseReason=' ' IsAutoSuspend=0 BusinessUnit=<nil> RequestID=0 OrderLocalID=<nil> ExchangeID="DCE" ParticipantID="0117" ClientID="03421065" ExchangeInstID="i1811" TraderID="01172006" InstallID=1 OrderSubmitStatus='3' NotifySequence=1 TradingDay="20180712" SettlementID=1 OrderSysID=<nil> OrderSource='0' OrderStatus='5' OrderType='0' VolumeTraded=0 VolumeTotal=1 InsertDate="20180712" InsertTime="21:02:20" ActiveTime=<nil> SuspendTime=<nil> UpdateTime=<nil> CancelTime="21:02:21" ActiveTraderID=<nil> ClearingPartID=<nil> SequenceNo=71 FrontID=0 SessionID=0 UserProductInfo=<nil> StatusMsg="已撤单" UserForceClose=0 ActiveUserID=<nil> BrokerOrderSeq=1022 RelativeOrderSysID=<nil> ZCETotalTradedVolume=0 IsSwapOrder=0]|RspInfoField:[ErrorID=0 ErrorMsg=<nil>]|reqId=3|isLast=false);
+... ...
+
+之后我们再次测试发出reqOrderInsert 的請求，但是柜台依旧没有回报
+2018-07-12 09:18:15,398 [DEBUG] [atchQueue[main]] OUT-main: reqOrderInsert(InputOrderField:[BrokerID="4600" InvestorID="220888" InstrumentID="c1903" OrderRef="692" UserID="220888" OrderPriceType='2' Direction='0' CombOffsetFlag="0" CombHedgeFlag="1" LimitPrice=1876.0 VolumeTotalOriginal=1 TimeCondition='3' GTDDate=<nil> VolumeCondition='1' MinVolume=0 ContingentCondition='1' StopPrice=0.0 ForceCloseReason='0' IsAutoSuspend=0 BusinessUnit=<nil> RequestID=7 UserForceClose=0 IsSwapOrder=0]);
+
+结论是，别的函数回报CTP都正常能给我们回报，唯独没有onRtnOrder,onRtnTrade
