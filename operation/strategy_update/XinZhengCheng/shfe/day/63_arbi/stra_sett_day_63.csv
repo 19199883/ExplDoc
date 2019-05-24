@@ -1,10 +1,2 @@
 comm_no,strategy,contract,lot
-shrb,st301a_rb_day,rb1910,0
-shrb,st302a_rb_day,rb1910,0
-shrb,st303a_rb_day,rb1910,0
-shrb,st305a_rb_day,rb1910,0
-shrb,st309a_rb_day,rb1910,0
-shrb,st312a_rb_day,rb1910,0
-shrb,st313a_rb_day,rb1910,0
-shrb,st315a_rb_day,rb1910,0
-shrb,st317a_rb_day,rb1910,0
+shrb,st500_rb_day,rb1910,1
