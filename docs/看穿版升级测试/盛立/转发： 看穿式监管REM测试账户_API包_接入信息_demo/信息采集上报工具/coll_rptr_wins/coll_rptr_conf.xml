@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <server_info ip="10.1.59.42" port="20001"/>
+  <enable_log status="1"/>
+  <clients rptr_time="300" reconnect_time="5">
+    <client app_id="111" auth_id="111111" login_id="test001" password="1" />
+    <client app_id="222" auth_id="222222" login_id="test002" password="1" ip="10.1.59.42"/>
+    <client app_id="333" auth_id="333333" login_id="test003" password="1" ip=""/>
+  </clients>
+</config>
+  
