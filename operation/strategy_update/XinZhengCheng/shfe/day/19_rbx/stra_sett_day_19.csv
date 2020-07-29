@@ -1,5 +1,5 @@
 comm_no,strategy,contract,lot
-shfu,st500_shfu_day,fu2005,1
-shag,st500_shag_day,ag2006,1
-shrb,st500_shrb_day,rb2010,1
-shrb,st514_shrb_day,rb2010,3
+shfu,st500_shfu_day,fu2009,0
+shag,st500_shag_day,ag2006,0
+shrb,st500_shrb_day,rb2010,0
+shrb,st514_shrb_day,rib2010,0
