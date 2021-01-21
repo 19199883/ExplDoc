@@ -1,0 +1,2 @@
+1. 从commit中删除大文件的提交
+	 git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch "zhongxin.rar" ' --prune-empty --tag-name-filter cat -- --all
